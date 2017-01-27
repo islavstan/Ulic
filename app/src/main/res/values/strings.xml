@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Ulic</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="goods_info">Разрешение, пиксели	1920x1080
+Тип матрицы	нет данных
+Изогнутый экран	нет
+Частота, Гц	100
+Угол обзора, гор/верт	нет данных
+Время реакции, мс	нет данных</string>
+</resources>

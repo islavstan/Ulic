@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="wrap_content"
+
+    android:layout_height="wrap_content">
+
+    <android.support.v7.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:padding="4dp"
+        android:layout_height="wrap_content"
+        card_view:cardElevation="4dp"
+      >
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:id="@+id/image_block"
+                android:layout_height="140dp">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="136dp"
+                android:id="@+id/image"
+                android:scaleType="centerCrop"
+                android:src="@drawable/tv"/>
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_margin="16dp"
+                    android:background="#99171717"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/date"
+                        android:paddingTop="2dp"
+                        android:paddingBottom="2dp"
+                        android:paddingLeft="4dp"
+                        android:paddingRight="4dp"
+                        android:textColor="#FFFFFF"
+                        android:textSize="12sp"
+                        android:text="18.09.17"/>
+                </FrameLayout>
+
+                <ImageView
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_margin="16dp"
+                    android:id="@+id/favorite"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/star_border"/>
+
+
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_below="@+id/image_block"
+                android:gravity="center"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:text="Телевизор в отличном состоянии "
+                    android:gravity="left"
+                    android:textColor="#212121"
+                    android:layout_margin="8dp"
+                    android:textSize="16sp"
+                    android:maxLines="1"
+                    android:id="@+id/shop_name"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_below="@+id/shop_name"
+                    android:gravity="left"
+                    android:text="800 грн"
+                    android:maxLines="1"
+                    android:textColor="#424242"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginRight="8dp"
+                    android:textSize="20sp"
+                    android:id="@+id/price"
+                    android:layout_height="wrap_content" />
+
+
+
+
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+
+</LinearLayout>

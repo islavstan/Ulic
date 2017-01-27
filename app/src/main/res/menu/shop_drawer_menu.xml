@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/redact_pers_info"
+        android:background="?attr/selectableItemBackground"
+        android:title="Личные данные" />
+    <!--
+            <item
+                android:id="@+id/galery"
+
+                android:background="?attr/selectableItemBackground"
+                android:icon="@drawable/ic_photo_black_24dp"
+                android:title="Галерея" />
+      -->
+
+    <item
+        android:id="@+id/invite_friend"
+
+        android:background="?attr/selectableItemBackground"
+        android:title="Пригласить друзей" />
+    <item
+        android:id="@+id/discount"
+        android:background="?attr/selectableItemBackground"
+        android:title="Дисконт" />
+
+    <item
+        android:id="@+id/setting"
+        android:background="?attr/selectableItemBackground"
+        android:title="Настройки" />
+
+
+    <item
+        android:id="@+id/exit"
+        android:background="?attr/selectableItemBackground"
+        android:title="Выход" />
+
+</menu>
