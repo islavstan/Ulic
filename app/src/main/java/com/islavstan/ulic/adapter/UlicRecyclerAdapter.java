@@ -21,7 +21,18 @@ import java.util.List;
 public class UlicRecyclerAdapter extends RecyclerView.Adapter<UlicRecyclerAdapter.CustomViewHolder> {
     private List<Goods> goodsList;
     public Handler hRefresh;
+    public static final int goods_item2 = 2;
+    public static final int goods_item4 = 4;
+    public static final int goods_item1 = 1;
+    int view =2;
 
+    public int getView() {
+        return view;
+    }
+
+    public void setView(int view) {
+        this.view = view;
+    }
 
     public UlicRecyclerAdapter(List<Goods> goodsList) {
         this.goodsList = goodsList;
@@ -39,8 +50,19 @@ public class UlicRecyclerAdapter extends RecyclerView.Adapter<UlicRecyclerAdapte
 
     @Override
     public CustomViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.goods_item, parent, false);
+        View itemView = null;
+        if (view == goods_item2) {
+
+            itemView = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.goods_item2, parent, false);
+        } else if (view == goods_item1) {
+            itemView = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.goods_item1, parent, false);
+        } else {
+            itemView = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.goods_item4, parent, false);
+        }
+
 
         return new CustomViewHolder(itemView);
     }

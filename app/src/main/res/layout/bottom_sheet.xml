@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:id="@+id/bottom_sheet"
+    app:behavior_peekHeight="60dp"
+
+    app:layout_behavior="android.support.design.widget.BottomSheetBehavior">
+
+
+    <FrameLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="340dp"
+            android:background="#EEEEEE"
+
+            android:orientation="vertical">
+       <LinearLayout
+           android:layout_marginTop="4dp"
+           android:elevation="4dp"
+           android:layout_width="match_parent"
+           android:layout_height="60dp"
+           android:orientation="horizontal">
+           <ImageButton
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:src="@drawable/view_one"
+               android:padding="4dp"
+               android:layout_marginLeft="8dp"
+               android:layout_gravity="center_vertical"
+               android:background="?selectableItemBackgroundBorderless"
+               android:id="@+id/view1Btn"/>
+
+           <ImageButton
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:src="@drawable/ic_view_two"
+               android:padding="4dp"
+               android:layout_marginLeft="8dp"
+               android:layout_gravity="center_vertical"
+               android:background="?selectableItemBackgroundBorderless"
+               android:id="@+id/view2Btn"/>
+           <ImageButton
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:src="@drawable/view_four"
+               android:padding="4dp"
+               android:layout_marginLeft="8dp"
+               android:layout_gravity="center_vertical"
+               android:background="?selectableItemBackgroundBorderless"
+               android:id="@+id/view4Btn"/>
+
+       </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="stas2"
+            android:textColor="@android:color/white" />
+
+
+        </LinearLayout>
+
+     <!--   <android.support.design.widget.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/gmail_fab"
+            app:backgroundTint="#FDC307"
+            android:layout_gravity="end"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:clickable="true"
+            android:src="@drawable/fab_add" />-->
+
+
+    </FrameLayout>
+
+</android.support.v4.widget.NestedScrollView>
