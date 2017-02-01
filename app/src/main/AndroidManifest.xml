@@ -15,7 +15,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".DetailGoodInfoActivity"></activity>
+        <activity android:name=".DetailGoodInfoActivity" />
+        <activity android:name=".CreateAdActivity"></activity>
     </application>
 
 </manifest>

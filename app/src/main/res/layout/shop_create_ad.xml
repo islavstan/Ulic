@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:elevation="6dp"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
+
+    <ImageView
+        android:layout_width="88dp"
+        android:layout_height="88dp"
+        android:id="@+id/photo"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/image"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+
+        android:padding="12dp">
+
+    <ImageView
+        android:id="@+id/ivContactItem1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_margin="8dp"
+        android:src="@drawable/goods_name" />
+
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/ivContactItem1"
+            android:id="@+id/input_layout_name"
+            android:layout_width="match_parent"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            app:hintTextAppearance="@style/MyHintText"
+            android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/input_name"
+                android:maxLines="3"
+                android:layout_width="match_parent"
+                android:theme="@style/MyEditText"
+                android:layout_height="wrap_content"
+                android:hint="название" />
+
+        </android.support.design.widget.TextInputLayout>
+
+</RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+
+        android:padding="12dp">
+
+        <ImageView
+            android:id="@+id/ivContactItem2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_margin="8dp"
+            android:src="@drawable/category" />
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/ivContactItem2"
+            android:id="@+id/input_layout_category"
+            android:layout_width="match_parent"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            app:hintTextAppearance="@style/MyHintText"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/ivContactItem2"
+                android:id="@+id/input_category"
+                android:layout_width="match_parent"
+                android:theme="@style/MyEditText"
+                android:inputType="none"
+                android:cursorVisible="false"
+                android:layout_height="wrap_content"
+                android:hint="категория" />
+
+        </android.support.design.widget.TextInputLayout>
+
+
+    </RelativeLayout>
+
+</LinearLayout>

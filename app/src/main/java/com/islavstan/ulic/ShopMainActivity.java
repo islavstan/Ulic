@@ -3,6 +3,7 @@ package com.islavstan.ulic;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomSheetBehavior;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -23,6 +24,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
+
 import com.islavstan.ulic.adapter.UlicRecyclerAdapter;
 import com.islavstan.ulic.model.Goods;
 
@@ -36,11 +38,11 @@ public class ShopMainActivity extends AppCompatActivity  implements NavigationVi
     UlicRecyclerAdapter adapter;
     private List<Goods> goodsList = new ArrayList<>();
     private RecyclerView recyclerView;
-    Button button;
     ImageButton viewType1Btn, viewType2Btn, viewType4Btn;
     Animation animationUp;
     Animation animationDown;
     NestedScrollView llBottomSheet;
+    FloatingActionButton fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,44 +52,58 @@ public class ShopMainActivity extends AppCompatActivity  implements NavigationVi
         setSupportActionBar(toolbar);
 
         // получение вью нижнего экрана
-         llBottomSheet = (NestedScrollView) findViewById(R.id.bottom_sheet);
+        llBottomSheet = (NestedScrollView) findViewById(R.id.bottom_sheet);
         final BottomSheetBehavior bottomSheetBehavior = BottomSheetBehavior.from(llBottomSheet);
-       // bottomSheetBehavior.setHideable(true);
+        // bottomSheetBehavior.setHideable(true);
+
+
+        fab = (FloatingActionButton)findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent =new Intent(ShopMainActivity.this, CreateAdActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
 
         animationUp = AnimationUtils.loadAnimation(getApplicationContext(),
                 R.anim.slide_up);
 
 
-         animationDown= AnimationUtils.loadAnimation(getApplicationContext(),
-                 R.anim.slide_down);
+        animationDown = AnimationUtils.loadAnimation(getApplicationContext(),
+                R.anim.slide_down);
 
-        viewType1Btn= (ImageButton)findViewById(R.id.view1Btn) ;
-        viewType2Btn= (ImageButton)findViewById(R.id.view2Btn) ;
-        viewType4Btn= (ImageButton)findViewById(R.id.view4Btn) ;
+        viewType1Btn = (ImageButton) findViewById(R.id.view1Btn);
+        viewType2Btn = (ImageButton) findViewById(R.id.view2Btn);
+        viewType4Btn = (ImageButton) findViewById(R.id.view4Btn);
 
 
+        animationDown.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
 
-          animationDown.setAnimationListener(new Animation.AnimationListener() {
-              @Override
-              public void onAnimationStart(Animation animation) {
+            }
 
-              }
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                bottomSheetBehavior.setPeekHeight(0);
+            }
 
-              @Override
-              public void onAnimationEnd(Animation animation) {
-                  bottomSheetBehavior.setPeekHeight(0);
-              }
+            @Override
+            public void onAnimationRepeat(Animation animation) {
 
-              @Override
-              public void onAnimationRepeat(Animation animation) {
-
-              }
-          });
+            }
+        });
 
         viewType1Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                viewType1Btn.setImageResource(R.drawable.view_one_select);
+                viewType2Btn.setImageResource(R.drawable.ic_view_two);
+                viewType4Btn.setImageResource(R.drawable.view_four);
+
                 adapter.setView(1);
                 RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(ShopMainActivity.this);
                 recyclerView.setLayoutManager(mLayoutManager);
@@ -99,6 +115,9 @@ public class ShopMainActivity extends AppCompatActivity  implements NavigationVi
         viewType2Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                viewType1Btn.setImageResource(R.drawable.view_one);
+                viewType2Btn.setImageResource(R.drawable.ic_view_two_select);
+                viewType4Btn.setImageResource(R.drawable.view_four);
                 adapter.setView(2);
                 RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(ShopMainActivity.this, 2);
                 recyclerView.setLayoutManager(mLayoutManager);
@@ -112,6 +131,9 @@ public class ShopMainActivity extends AppCompatActivity  implements NavigationVi
         viewType4Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                viewType1Btn.setImageResource(R.drawable.view_one);
+                viewType2Btn.setImageResource(R.drawable.ic_view_two);
+                viewType4Btn.setImageResource(R.drawable.view_four_select);
                 adapter.setView(4);
                 RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(ShopMainActivity.this, 4);
                 recyclerView.setLayoutManager(mLayoutManager);
@@ -120,20 +142,6 @@ public class ShopMainActivity extends AppCompatActivity  implements NavigationVi
 
             }
         });
-
-
-     /*   button =(Button)findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                adapter.setView(1);
-                RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(ShopMainActivity.this, 4);
-                recyclerView.setLayoutManager(mLayoutManager);
-                recyclerView.setItemAnimator(new DefaultItemAnimator());
-                recyclerView.setAdapter(adapter);
-            }
-        });*/
-
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -152,17 +160,17 @@ public class ShopMainActivity extends AppCompatActivity  implements NavigationVi
         navigationView.setNavigationItemSelectedListener(this);
 
 
-        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener(){
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy){
-                if (dy > 0){
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                if (dy > 0) {
                     llBottomSheet.startAnimation(animationDown);
 
                 }
 
-                    //fabAddNew.hide();
+                //fabAddNew.hide();
 
-                else if (dy < 0){
+                else if (dy < 0) {
                     llBottomSheet.startAnimation(animationUp);
                     bottomSheetBehavior.setPeekHeight(170);
                   /*  if(bottomSheetBehavior.getPeekHeight()==0){
@@ -173,9 +181,6 @@ public class ShopMainActivity extends AppCompatActivity  implements NavigationVi
 
             }
         });
-
-
-
 
 
     }
