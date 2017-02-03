@@ -17,6 +17,7 @@ android:background="#EEEEEE"
         android:layout_height="match_parent"
         android:textSize="18sp"
         android:textStyle="bold"
+        android:textColor="#424242"
         android:layout_marginLeft="16dp"
         android:gravity="center_vertical"
         tools:text="Genre" />

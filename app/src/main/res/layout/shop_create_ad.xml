@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
@@ -14,15 +18,46 @@
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+
+        android:padding="12dp">
+
+    <ImageView
+        android:id="@+id/ivContactItem0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_margin="8dp"
+        android:src="@drawable/checked" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="выбрать фото"
+            android:textSize="16sp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/ivContactItem0"
+
+            />
 
     <ImageView
         android:layout_width="88dp"
         android:layout_height="88dp"
         android:id="@+id/photo"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/ivContactItem0"
+        android:background="?selectableItemBackgroundBorderless"
         android:layout_marginTop="16dp"
+        android:clickable="true"
         android:layout_marginBottom="16dp"
         android:layout_gravity="center_horizontal"
         android:src="@drawable/image"/>
+    </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -37,7 +72,7 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_margin="8dp"
-        android:src="@drawable/goods_name" />
+        android:src="@drawable/checked" />
 
 
         <android.support.design.widget.TextInputLayout
@@ -47,12 +82,13 @@
             android:layout_width="match_parent"
             android:layout_marginTop="8dp"
             android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
+            android:layout_marginRight="16dp"
             app:hintTextAppearance="@style/MyHintText"
             android:layout_height="wrap_content">
             <EditText
                 android:id="@+id/input_name"
                 android:maxLines="3"
+
                 android:layout_width="match_parent"
                 android:theme="@style/MyEditText"
                 android:layout_height="wrap_content"
@@ -75,7 +111,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_margin="8dp"
-            android:src="@drawable/category" />
+            android:src="@drawable/checked" />
 
         <android.support.design.widget.TextInputLayout
             android:layout_centerVertical="true"
@@ -84,7 +120,7 @@
             android:layout_width="match_parent"
             android:layout_marginTop="8dp"
             android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
+            android:layout_marginRight="16dp"
             app:hintTextAppearance="@style/MyHintText"
             android:layout_height="wrap_content">
 
@@ -103,5 +139,138 @@
 
 
     </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
 
+        android:padding="12dp">
+
+        <ImageView
+            android:id="@+id/ivContactItem3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_margin="8dp"
+            android:src="@drawable/checked" />
+
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/ivContactItem3"
+            android:id="@+id/input_layout_price"
+            android:layout_width="match_parent"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="16dp"
+            app:hintTextAppearance="@style/MyHintText"
+            android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/input_price"
+                android:maxLines="1"
+                android:inputType="number"
+                android:layout_width="match_parent"
+                android:theme="@style/MyEditText"
+                android:layout_height="wrap_content"
+                android:hint="цена" />
+
+        </android.support.design.widget.TextInputLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+
+        android:padding="12dp">
+
+        <ImageView
+            android:id="@+id/ivContactItem4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_margin="8dp"
+            android:src="@drawable/checked" />
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textSize="18sp"
+    android:layout_marginLeft="8dp"
+    android:id="@+id/condition_text"
+    android:layout_toRightOf="@+id/ivContactItem4"
+    android:layout_centerVertical="true"
+    android:text="состояние"/>
+
+        <Spinner
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/condition_text"
+            android:id="@+id/spinner_condition"
+            android:layout_width="match_parent"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="8dp"
+            android:textAlignment="viewEnd"
+            android:layout_marginRight="16dp"
+            android:entries="@array/conditionList"
+            android:layout_height="wrap_content">
+
+
+        </Spinner>
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+
+        android:padding="12dp">
+
+        <ImageView
+            android:id="@+id/ivContactItem5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_margin="8dp"
+            android:src="@drawable/checked" />
+
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/ivContactItem5"
+            android:id="@+id/input_layout_description"
+            android:layout_width="match_parent"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="16dp"
+            app:hintTextAppearance="@style/MyHintText"
+            android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/input_description"
+                android:layout_width="match_parent"
+                android:theme="@style/MyEditText"
+                android:layout_height="wrap_content"
+                android:hint="описание" />
+
+        </android.support.design.widget.TextInputLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_marginTop="40dp"
+        android:layout_width="match_parent"
+        android:background="@color/colorPrimary"
+        android:layout_height="48dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:background="?selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:text="Разместить"
+            android:textColor="@color/colorAccent"
+            android:textSize="16sp"
+            android:layout_centerInParent="true"/>
+
+    </RelativeLayout>
 </LinearLayout>
+    </ScrollView>
