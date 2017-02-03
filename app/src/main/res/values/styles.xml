@@ -23,4 +23,14 @@
         <item name="colorControlActivated">@color/colorPrimary</item>
     </style>
 
+
+
+    <style name="AppTheme.Louvre.Light.DarkActionBar" parent="Louvre.Theme.Light.DarkActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/fabColor</item>
+    </style>
+    <style name="AppTheme.Louvre.Preview" parent="Louvre.Theme.Preview">
+        <item name="colorAccent">@color/fabColor</item>
+    </style>
 </resources>

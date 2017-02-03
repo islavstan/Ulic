@@ -24,7 +24,7 @@ public class UlicRecyclerAdapter extends RecyclerView.Adapter<UlicRecyclerAdapte
     public static final int goods_item2 = 2;
     public static final int goods_item4 = 4;
     public static final int goods_item1 = 1;
-    int view =2;
+    int view = 2;
 
     public int getView() {
         return view;
@@ -71,7 +71,7 @@ public class UlicRecyclerAdapter extends RecyclerView.Adapter<UlicRecyclerAdapte
     public void onBindViewHolder(final CustomViewHolder holder, int position) {
         final Goods goods = goodsList.get(position);
         holder.shopName.setText(goods.getName());
-        holder.price.setText(goods.getPrice()+" грн");
+        holder.price.setText(goods.getPrice() + " грн");
         holder.date.setText(goods.getDate());
         Picasso.with(holder.date.getContext()).load(goods.getImage()).into(holder.image);
         holder.favorite.setTag(R.drawable.star_border);
@@ -79,12 +79,12 @@ public class UlicRecyclerAdapter extends RecyclerView.Adapter<UlicRecyclerAdapte
         holder.favorite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int id = (int)holder.favorite.getTag();
-                if( id == R.drawable.star_border){
+                int id = (int) holder.favorite.getTag();
+                if (id == R.drawable.star_border) {
                     holder.favorite.setTag(R.drawable.star);
                     holder.favorite.setImageResource(R.drawable.star);
 
-                }else {
+                } else {
                     holder.favorite.setTag(R.drawable.star_border);
                     holder.favorite.setImageResource(R.drawable.star_border);
                 }
@@ -92,13 +92,10 @@ public class UlicRecyclerAdapter extends RecyclerView.Adapter<UlicRecyclerAdapte
         });
 
 
-
-
-
         holder.card_view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent =new Intent(holder.shopName.getContext(), DetailGoodInfoActivity.class);
+                Intent intent = new Intent(holder.shopName.getContext(), DetailGoodInfoActivity.class);
                 holder.shopName.getContext().startActivity(intent);
 
 
