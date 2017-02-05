@@ -15,4 +15,13 @@
         <item>новый</item>
         <item>б/у</item>
     </string-array>
+
+
+
+    <string-array name="placeList">
+        <item>вся Украина</item>
+        <item>область</item>
+        <item>город</item>
+    </string-array>
+
 </resources>

@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.islavstan.ulic.CreateAdActivity;
@@ -17,9 +18,6 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by islav on 03.02.2017.
- */
 
 public class ChoicePhotoAdapter extends RecyclerView.Adapter<ChoicePhotoAdapter.ViewHolder> {
     Uri drawableUri = Uri.parse("android.resource://com.islavstan.ulic/drawable/image");
@@ -27,9 +25,9 @@ public class ChoicePhotoAdapter extends RecyclerView.Adapter<ChoicePhotoAdapter.
     CreateAdActivity context;
     private static final int LOUVRE_REQUEST_CODE = 1;
 
-   public ChoicePhotoAdapter( Context context) {
+    public ChoicePhotoAdapter(Context context) {
         mData = new ArrayList<>();
-       this.context =(CreateAdActivity)context;
+        this.context = (CreateAdActivity) context;
     }
 
     @Override
@@ -52,13 +50,21 @@ public class ChoicePhotoAdapter extends RecyclerView.Adapter<ChoicePhotoAdapter.
         holder.mImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (mData.get(mData.size()-1) == drawableUri && position == mData.size()-1){
+                if (mData.get(mData.size() - 1) == drawableUri && position == mData.size() - 1) {
                     context.getLouvre().setRequestCode(LOUVRE_REQUEST_CODE).open();
 
                 }
             }
         });
 
+
+        holder.deleteBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mData.remove(position);
+                notifyDataSetChanged();
+            }
+        });
 
     }
 
@@ -67,12 +73,12 @@ public class ChoicePhotoAdapter extends RecyclerView.Adapter<ChoicePhotoAdapter.
         return mData.size();
     }
 
-  public void swapData(@Nullable List<Uri> data) {
+    public void swapData(@Nullable List<Uri> data) {
         if (!mData.equals(data)) {
             mData.clear();
             if (data != null) {
                 mData.addAll(data);
-                if(mData.size()<4)
+                if (mData.size() < 4)
                     mData.add(drawableUri);
             }
             notifyDataSetChanged();
@@ -81,11 +87,13 @@ public class ChoicePhotoAdapter extends RecyclerView.Adapter<ChoicePhotoAdapter.
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
-        private final ImageView mImageView;
+        private ImageView mImageView;
+        private ImageButton deleteBtn;
 
         private ViewHolder(View itemView) {
             super(itemView);
             mImageView = (ImageView) itemView.findViewById(R.id.photo);
+            deleteBtn = (ImageButton) itemView.findViewById(R.id.deleteBtn);
         }
     }
 

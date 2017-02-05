@@ -36,7 +36,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="выбрать фото"
+            android:text="выбрать от 1 до 4 фото"
             android:textSize="16sp"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
@@ -155,7 +155,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/selectableItemBackground"
-
         android:padding="12dp">
 
         <ImageView
@@ -190,9 +189,52 @@
 
     </RelativeLayout>
 
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+
+        android:padding="12dp">
+
+        <ImageView
+            android:id="@+id/ivContactItem6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_margin="8dp"
+            android:src="@drawable/checked" />
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/ivContactItem6"
+            android:id="@+id/input_layout_place"
+            android:layout_width="match_parent"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="16dp"
+            app:hintTextAppearance="@style/MyHintText"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/ivContactItem2"
+                android:id="@+id/input_place"
+                android:layout_width="match_parent"
+                android:theme="@style/MyEditText"
+                android:inputType="none"
+                android:cursorVisible="false"
+                android:layout_height="wrap_content"
+                android:hint="место продажи" />
+
+        </android.support.design.widget.TextInputLayout>
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="88dp"
         android:background="?attr/selectableItemBackground"
 
         android:padding="12dp">
@@ -230,6 +272,10 @@
         </Spinner>
 
     </RelativeLayout>
+
+
+
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

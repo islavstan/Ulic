@@ -16,8 +16,6 @@ public class DetailGoodInfoActivity extends AppCompatActivity {
     TextView goodsInfo;
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,11 +26,10 @@ public class DetailGoodInfoActivity extends AppCompatActivity {
         setTitle("");
 
 
-
-        rollPagerView = (RollPagerView)findViewById(R.id.rollPagerView);
-        LoopAdapter adapter =new LoopAdapter(rollPagerView);
+        rollPagerView = (RollPagerView) findViewById(R.id.rollPagerView);
+        LoopAdapter adapter = new LoopAdapter(rollPagerView);
         rollPagerView.setAdapter(adapter);
-       // rollPagerView.pause();
+        // rollPagerView.pause();
 
 
     }

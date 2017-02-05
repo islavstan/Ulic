@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:id="@+id/block1"
+        android:background="@color/colorPrimary"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/place_white"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="8dp"
+            android:text="Область"
+            android:textSize="18sp"
+            android:id="@+id/title"
+            android:textColor="#FFFFFF"
+            />
+
+
+
+
+
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/text"
+        android:textColor="#000000"
+        android:text="Введите название области"
+        android:textSize="18sp"
+        android:padding="8dp"
+        android:layout_below="@+id/block1"/>
+
+    <EditText
+        android:layout_below="@+id/text"
+        android:padding="8dp"
+        android:textSize="18sp"
+        style="@style/MyEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/edit_city"/>
+
+</RelativeLayout>

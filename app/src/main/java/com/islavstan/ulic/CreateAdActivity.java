@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -17,10 +18,12 @@ import com.andremion.louvre.Louvre;
 import com.andremion.louvre.home.GalleryActivity;
 import com.islavstan.ulic.adapter.ChoicePhotoAdapter;
 import com.islavstan.ulic.category.CategoryDialog;
+import com.islavstan.ulic.place.PlaceDialog;
 
-public class CreateAdActivity extends AppCompatActivity {
+public class CreateAdActivity extends AppCompatActivity  implements PlaceDialog.OnCompleteListener {
     //https://github.com/andremion/Louvre/tree/development/sample/src/main/java/com/andremion/louvre/sample
     EditText categoryET;
+    EditText placeET;
     CategoryDialog categoryDialog;
     ImageView photo;
     Louvre louvre;
@@ -28,7 +31,6 @@ public class CreateAdActivity extends AppCompatActivity {
     public Louvre getLouvre() {
         return louvre;
     }
-
 
 
     RecyclerView recyclerView;
@@ -46,14 +48,17 @@ public class CreateAdActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.shop_create_ad);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setTitle("Разместить объявление");
 
-
-
+        placeET = (EditText) findViewById(R.id.input_place);
         nameImage = (ImageView) findViewById(R.id.ivContactItem1);
         nameET = (EditText) findViewById(R.id.input_name);
-        nameInput = (TextInputLayout)findViewById(R.id.input_layout_name) ;
+        nameInput = (TextInputLayout) findViewById(R.id.input_layout_name);
 
-        photoCheck = (ImageView)findViewById(R.id.ivContactItem0);
+        photoCheck = (ImageView) findViewById(R.id.ivContactItem0);
 
         nameET.addTextChangedListener(new TextWatcher() {
             @Override
@@ -63,14 +68,14 @@ public class CreateAdActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                        if(charSequence.length()>=5){
-                            nameImage.setImageResource(R.drawable.green_checked);
-                            nameInput.setError(null);
-                        }else {
-                            nameImage.setImageResource(R.drawable.checked);
-                            nameInput.setError("Название должно содержать минимум 5 символов");
+                if (charSequence.length() >= 5) {
+                    nameImage.setImageResource(R.drawable.green_checked);
+                    nameInput.setError(null);
+                } else {
+                    nameImage.setImageResource(R.drawable.checked);
+                    nameInput.setError("Название должно содержать минимум 5 символов");
 
-                        }
+                }
             }
 
             @Override
@@ -107,6 +112,18 @@ public class CreateAdActivity extends AppCompatActivity {
                 louvre.setRequestCode(LOUVRE_REQUEST_CODE).open();
             }
         });
+
+
+        placeET.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PlaceDialog placeDialog = new PlaceDialog();
+                final FragmentManager fm = CreateAdActivity.this.getFragmentManager();
+                placeDialog.show(fm, "placeDialog");
+            }
+        });
+
+
     }
 
 
@@ -117,20 +134,22 @@ public class CreateAdActivity extends AppCompatActivity {
     }
 
 
-
-
-
-
-
-   @Override
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-       if (requestCode == LOUVRE_REQUEST_CODE && resultCode == RESULT_OK) {
-           choicePhotoAdapter.swapData(GalleryActivity.getSelection(data));
-           photo.setVisibility(View.GONE);
-           recyclerView.setVisibility(View.VISIBLE);
-           photoCheck.setImageResource(R.drawable.green_checked);
-           return;
-       }
-       super.onActivityResult(requestCode, resultCode, data);
-   }
+        if (requestCode == LOUVRE_REQUEST_CODE && resultCode == RESULT_OK) {
+            choicePhotoAdapter.swapData(GalleryActivity.getSelection(data));
+            photo.setVisibility(View.GONE);
+            recyclerView.setVisibility(View.VISIBLE);
+            photoCheck.setImageResource(R.drawable.green_checked);
+            return;
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    @Override
+    public void onComplete(String place) {
+
+        placeET.setText(place);
+
+    }
 }
