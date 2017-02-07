@@ -20,7 +20,7 @@
 
             android:layout_width="match_parent"
             android:layout_marginTop="28dp"
-            android:layout_height="340dp"
+            android:layout_height="wrap_content"
             android:background="#FAFAFA"
 
             android:orientation="vertical">
@@ -64,13 +64,143 @@
 
        </LinearLayout>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="stas2"
-            android:textColor="@android:color/white" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:id="@+id/expander_block"
+                android:layout_below="@+id/controlTV"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:text="выбрать рубрику"
+                    android:padding="16dp"
+                    android:id="@+id/categoryBtn"
+                    android:clickable="true"
+                    android:background="?attr/selectableItemBackground"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="#212121"
+                    android:layout_height="wrap_content" />
 
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="16dp"
+                    android:id="@+id/down_image"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/drop_down"/>
+            </RelativeLayout>
+            <com.github.aakira.expandablelayout.ExpandableRelativeLayout
+                android:id="@+id/expandableLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:ael_expanded="false"
+                app:ael_duration="500"
+                android:animateLayoutChanges="true"
+                android:layout_below="@+id/expander_block"
+                app:ael_orientation="vertical">
+
+                <android.support.v7.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:id="@+id/categoryRecycler"
+                    android:layout_height="wrap_content">
+
+                </android.support.v7.widget.RecyclerView>
+
+
+
+            </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:id="@+id/expander_block2"
+                android:layout_below="@+id/controlTV"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:text="выбрать категорию"
+                    android:padding="16dp"
+                    android:id="@+id/categoryBtn2"
+                    android:clickable="true"
+                    android:background="?attr/selectableItemBackground"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="#212121"
+                    android:layout_height="wrap_content" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="16dp"
+                    android:id="@+id/down_image2"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/drop_down"/>
+            </RelativeLayout>
+            <com.github.aakira.expandablelayout.ExpandableRelativeLayout
+                android:id="@+id/expandableLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:ael_expanded="false"
+                app:ael_duration="500"
+                android:animateLayoutChanges="true"
+                android:layout_below="@+id/expander_block"
+                app:ael_orientation="vertical">
+
+                <android.support.v7.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:id="@+id/categoryRecycler2"
+                    android:layout_height="wrap_content">
+
+                </android.support.v7.widget.RecyclerView>
+
+
+
+            </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:id="@+id/expander_block3"
+                android:layout_below="@+id/controlTV"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:text="сортировать"
+                    android:padding="16dp"
+                    android:id="@+id/sortBtn"
+                    android:clickable="true"
+                    android:background="?attr/selectableItemBackground"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="#212121"
+                    android:layout_height="wrap_content" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="16dp"
+                    android:id="@+id/down_image3"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/drop_down"/>
+            </RelativeLayout>
+            <com.github.aakira.expandablelayout.ExpandableRelativeLayout
+                android:id="@+id/expandableLayout3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:ael_expanded="false"
+                app:ael_duration="500"
+                android:animateLayoutChanges="true"
+                android:layout_below="@+id/expander_block"
+                app:ael_orientation="vertical">
+
+                <android.support.v7.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:id="@+id/sortRecycler"
+                    android:layout_height="wrap_content">
+
+                </android.support.v7.widget.RecyclerView>
+
+
+
+            </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
 
         </LinearLayout>
 

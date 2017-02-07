@@ -1,4 +1,4 @@
-package com.islavstan.ulic.category;
+package com.islavstan.ulic.category_dialog;
 
 import android.content.Context;
 import android.view.LayoutInflater;

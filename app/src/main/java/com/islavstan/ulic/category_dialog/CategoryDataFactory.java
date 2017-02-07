@@ -1,4 +1,4 @@
-package com.islavstan.ulic.category;
+package com.islavstan.ulic.category_dialog;
 
 import java.util.Arrays;
 import java.util.List;

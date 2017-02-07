@@ -17,7 +17,7 @@ import android.widget.ImageView;
 import com.andremion.louvre.Louvre;
 import com.andremion.louvre.home.GalleryActivity;
 import com.islavstan.ulic.adapter.ChoicePhotoAdapter;
-import com.islavstan.ulic.category.CategoryDialog;
+import com.islavstan.ulic.category_dialog.CategoryDialog;
 import com.islavstan.ulic.place.PlaceDialog;
 
 public class CreateAdActivity extends AppCompatActivity  implements PlaceDialog.OnCompleteListener {

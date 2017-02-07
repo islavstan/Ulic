@@ -1,4 +1,4 @@
-package com.islavstan.ulic.category;
+package com.islavstan.ulic.category_dialog;
 
 import com.thoughtbot.expandablerecyclerview.models.ExpandableGroup;
 

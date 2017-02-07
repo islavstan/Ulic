@@ -18,7 +18,8 @@ import com.islavstan.ulic.R;
 
 public class PlaceDialog extends DialogFragment {
     EditText editText;
-
+    TextView title;
+    TextView text;
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         final String[] placeList = {"Вся Украина", "Область", "Город"};
@@ -27,6 +28,9 @@ public class PlaceDialog extends DialogFragment {
             @Override
             public void onClick(final DialogInterface dialog, int item) {
 
+                if (placeList[item].equals("Вся Украина")) {
+                    mListener.onComplete("Вся Украина");
+                }
 
                 if (placeList[item].equals("Область")) {
                     AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getActivity());
@@ -47,8 +51,8 @@ public class PlaceDialog extends DialogFragment {
                         }
                     });
 
-                    TextView title = (TextView) dialogView.findViewById(R.id.title);
-                    TextView text = (TextView) dialogView.findViewById(R.id.text);
+                    title = (TextView) dialogView.findViewById(R.id.title);
+                    text = (TextView) dialogView.findViewById(R.id.text);
                     editText = (EditText) dialogView.findViewById(R.id.edit_city);
                     title.setText("Область");
                     text.setText("Введите название области");
@@ -60,7 +64,44 @@ public class PlaceDialog extends DialogFragment {
                 }
 
 
+
+            if (placeList[item].equals("Город")) {
+                AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getActivity());
+                LayoutInflater inflater = getActivity().getLayoutInflater();
+                final View dialogView = inflater.inflate(R.layout.dialog_for_place, null);
+                dialogBuilder.setView(dialogView);
+
+                dialogBuilder.setPositiveButton("Ок", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        mListener.onComplete(editText.getText().toString().trim());
+
+                    }
+                }).setNegativeButton("Отмена", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialog.dismiss();
+                    }
+                });
+
+                title = (TextView) dialogView.findViewById(R.id.title);
+                text = (TextView) dialogView.findViewById(R.id.text);
+                editText = (EditText) dialogView.findViewById(R.id.edit_city);
+                title.setText("Город");
+                text.setText("Введите название города");
+                final AlertDialog alertDialog = dialogBuilder.create();
+                alertDialog.show();
+                alertDialog.getButton(dialog.BUTTON_NEGATIVE).setTextColor(Color.BLACK);
+                alertDialog.getButton(dialog.BUTTON_POSITIVE).setTextColor(Color.BLACK);
+
             }
+
+
+        }
+
+
+
+
         });
         dialogBuilder.setCancelable(true);
 

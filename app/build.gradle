@@ -43,4 +43,6 @@ dependencies {
 
 
     compile 'com.github.andremion:louvre:1.0.0'
+
+    compile 'com.github.aakira:expandable-layout:1.6.0@aar'
 }

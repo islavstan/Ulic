@@ -1,4 +1,4 @@
-package com.islavstan.ulic.category;
+package com.islavstan.ulic.category_dialog;
 
 
 import android.app.Dialog;
@@ -10,11 +10,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.TextView;
 
 import com.islavstan.ulic.R;
 
-import static com.islavstan.ulic.category.CategoryDataFactory.makeCategory;
+import static com.islavstan.ulic.category_dialog.CategoryDataFactory.makeCategory;
 
 public class CategoryDialog extends DialogFragment{
      CategoryAdapter adapter;

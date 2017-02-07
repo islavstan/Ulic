@@ -20,18 +20,20 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 
+import com.github.aakira.expandablelayout.ExpandableLayoutListener;
+import com.github.aakira.expandablelayout.ExpandableRelativeLayout;
 import com.islavstan.ulic.adapter.UlicRecyclerAdapter;
+import com.islavstan.ulic.bottom_sheet.BSCategoryRecyclerAdapter;
 import com.islavstan.ulic.model.Goods;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static android.R.attr.id;
 //   https://github.com/Suleiman19/Android-Material-Design-for-pre-Lollipop
 public class ShopMainActivity extends AppCompatActivity  implements NavigationView.OnNavigationItemSelectedListener {
     NavigationView navigationView;
@@ -43,21 +45,59 @@ public class ShopMainActivity extends AppCompatActivity  implements NavigationVi
     Animation animationDown;
     NestedScrollView llBottomSheet;
     FloatingActionButton fab;
+    Toolbar toolbar;
+
+    private RecyclerView rubricsRecycler;
+    ExpandableRelativeLayout rubricExpandableLayout;
+    ImageView down_image;
+    TextView rubricsBtn;
+    List<String> category = new ArrayList<>();
+
+    private RecyclerView categoryRecycler;
+    ExpandableRelativeLayout categoryExpandableLayout;
+    ImageView categoryDownImage;
+    TextView categoryBtn;
+
+
+
+    private RecyclerView sortRecycler;
+    ExpandableRelativeLayout sortExpandableLayout;
+    ImageView sortDownImage;
+    TextView sortBtn;
+    List<String> sortList = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.shop_drawer_layout);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        // получение вью нижнего экрана
-        llBottomSheet = (NestedScrollView) findViewById(R.id.bottom_sheet);
-        final BottomSheetBehavior bottomSheetBehavior = BottomSheetBehavior.from(llBottomSheet);
-        // bottomSheetBehavior.setHideable(true);
 
+        changeViewTypeMainRecyclerView();
+        initBottomSheetExpandable();
+        prepareCategory();
+        initMainInterface();
+        prepareGoodsData();
+        prepareSortData();
+    }
+
+
+    private void initMainInterface() {
 
         fab = (FloatingActionButton) findViewById(R.id.fab);
+        llBottomSheet = (NestedScrollView) findViewById(R.id.bottom_sheet);
+        final BottomSheetBehavior bottomSheetBehavior = BottomSheetBehavior.from(llBottomSheet);
+        animationUp = AnimationUtils.loadAnimation(getApplicationContext(),
+                R.anim.slide_up);
+        animationDown = AnimationUtils.loadAnimation(getApplicationContext(),
+                R.anim.slide_down);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        recyclerView = (RecyclerView) findViewById(R.id.recycler);
+        adapter = new UlicRecyclerAdapter(goodsList);
+
+
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -65,18 +105,6 @@ public class ShopMainActivity extends AppCompatActivity  implements NavigationVi
                 startActivity(intent);
             }
         });
-
-
-        animationUp = AnimationUtils.loadAnimation(getApplicationContext(),
-                R.anim.slide_up);
-
-
-        animationDown = AnimationUtils.loadAnimation(getApplicationContext(),
-                R.anim.slide_down);
-
-        viewType1Btn = (ImageButton) findViewById(R.id.view1Btn);
-        viewType2Btn = (ImageButton) findViewById(R.id.view2Btn);
-        viewType4Btn = (ImageButton) findViewById(R.id.view4Btn);
 
 
         animationDown.setAnimationListener(new Animation.AnimationListener() {
@@ -95,6 +123,48 @@ public class ShopMainActivity extends AppCompatActivity  implements NavigationVi
 
             }
         });
+
+
+        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 2);
+        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(adapter);
+
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+
+
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                if (dy > 0) {
+                    llBottomSheet.startAnimation(animationDown);
+
+                } else if (dy < 0) {
+                    llBottomSheet.startAnimation(animationUp);
+                    bottomSheetBehavior.setPeekHeight(170);
+
+                }
+
+
+            }
+        });
+
+
+    }
+
+
+    private void changeViewTypeMainRecyclerView() {
+
+        //-----------смена вида RecyclerView-----------
+        viewType1Btn = (ImageButton) findViewById(R.id.view1Btn);
+        viewType2Btn = (ImageButton) findViewById(R.id.view2Btn);
+        viewType4Btn = (ImageButton) findViewById(R.id.view4Btn);
+
 
         viewType1Btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -143,48 +213,164 @@ public class ShopMainActivity extends AppCompatActivity  implements NavigationVi
         });
 
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        recyclerView = (RecyclerView) findViewById(R.id.recycler);
-        adapter = new UlicRecyclerAdapter(goodsList);
-        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 2);
-        recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(adapter);
-        prepareData();
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-        navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+    }
 
 
-        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+    private void initBottomSheetExpandable() {
+
+
+        //--------рубрики----------
+        rubricsBtn = (TextView) findViewById(R.id.categoryBtn);
+        down_image = (ImageView) findViewById(R.id.down_image);
+        rubricExpandableLayout = (ExpandableRelativeLayout) findViewById(R.id.expandableLayout);
+        rubricsRecycler = (RecyclerView) findViewById(R.id.categoryRecycler);
+        BSCategoryRecyclerAdapter rubricsRecyclerAdapter = new BSCategoryRecyclerAdapter(category);
+        RecyclerView.LayoutManager rubricsManager = new LinearLayoutManager(ShopMainActivity.this);
+        rubricsRecycler.setLayoutManager(rubricsManager);
+        rubricsRecycler.setAdapter(rubricsRecyclerAdapter);
+        rubricExpandableLayout.setListener(new ExpandableLayoutListener() {
             @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                if (dy > 0) {
-                    llBottomSheet.startAnimation(animationDown);
-
-                }
-
-                //fabAddNew.hide();
-
-                else if (dy < 0) {
-                    llBottomSheet.startAnimation(animationUp);
-                    bottomSheetBehavior.setPeekHeight(170);
-                  /*  if(bottomSheetBehavior.getPeekHeight()==0){
-                       //
-                    }*/
-                }
-
+            public void onAnimationStart() {
 
             }
+
+            @Override
+            public void onAnimationEnd() {
+
+            }
+
+            @Override
+            public void onPreOpen() {
+
+            }
+
+            @Override
+            public void onPreClose() {
+
+            }
+
+            @Override
+            public void onOpened() {
+                down_image.setImageResource(R.drawable.drop_up);
+            }
+
+            @Override
+            public void onClosed() {
+                down_image.setImageResource(R.drawable.drop_down);
+            }
+        });
+
+        rubricsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                rubricExpandableLayout.toggle();
+            }
+        });
+
+
+        //--------категории----------
+        categoryRecycler = (RecyclerView) findViewById(R.id.categoryRecycler2);
+        categoryExpandableLayout = (ExpandableRelativeLayout) findViewById(R.id.expandableLayout2);
+        categoryDownImage = (ImageView) findViewById(R.id.down_image2);
+        categoryBtn = (TextView) findViewById(R.id.categoryBtn2);
+        categoryRecycler = (RecyclerView) findViewById(R.id.categoryRecycler2);
+        BSCategoryRecyclerAdapter categoryRecyclerAdapter2 = new BSCategoryRecyclerAdapter(category);
+        RecyclerView.LayoutManager categoryManager2 = new LinearLayoutManager(ShopMainActivity.this);
+        categoryRecycler.setLayoutManager(categoryManager2);
+        categoryRecycler.setAdapter(categoryRecyclerAdapter2);
+        categoryBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                categoryExpandableLayout.toggle();
+            }
+        });
+        categoryExpandableLayout.setListener(new ExpandableLayoutListener() {
+            @Override
+            public void onAnimationStart() {
+
+            }
+
+            @Override
+            public void onAnimationEnd() {
+
+            }
+
+            @Override
+            public void onPreOpen() {
+
+            }
+
+            @Override
+            public void onPreClose() {
+
+            }
+
+            @Override
+            public void onOpened() {
+                categoryDownImage.setImageResource(R.drawable.drop_up);
+            }
+
+            @Override
+            public void onClosed() {
+                categoryDownImage.setImageResource(R.drawable.drop_down);
+            }
+        });
+
+
+        //----------------сортировка-------------
+        sortRecycler = (RecyclerView) findViewById(R.id.sortRecycler);
+        sortExpandableLayout = (ExpandableRelativeLayout) findViewById(R.id.expandableLayout3);
+        sortDownImage = (ImageView) findViewById(R.id.down_image3);
+        sortBtn = (TextView) findViewById(R.id.sortBtn);
+        BSCategoryRecyclerAdapter sortRecyclerAdapter = new BSCategoryRecyclerAdapter(sortList);
+        RecyclerView.LayoutManager sortManager = new LinearLayoutManager(ShopMainActivity.this);
+        sortRecycler.setLayoutManager(sortManager);
+        sortRecycler.setAdapter(sortRecyclerAdapter);
+        sortBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sortExpandableLayout.toggle();
+            }
+        });
+        sortExpandableLayout.setListener(new ExpandableLayoutListener() {
+            @Override
+            public void onAnimationStart() {
+
+            }
+
+            @Override
+            public void onAnimationEnd() {
+
+            }
+
+            @Override
+            public void onPreOpen() {
+
+            }
+
+            @Override
+            public void onPreClose() {
+
+            }
+
+            @Override
+            public void onOpened() {
+                sortDownImage.setImageResource(R.drawable.drop_up);
+            }
+
+            @Override
+            public void onClosed() {
+                sortDownImage.setImageResource(R.drawable.drop_down);
+            }
+
+
         });
 
 
     }
 
-    private void prepareData() {
+
+    private void prepareGoodsData() {
         Goods goods = new Goods("Телевизор", 5000, R.drawable.tv, "09.06.17");
         goodsList.add(goods);
         goods = new Goods("Ботинки мужские", 450, R.drawable.boots, "12.06.17");
@@ -205,6 +391,22 @@ public class ShopMainActivity extends AppCompatActivity  implements NavigationVi
         goodsList.add(goods);
         goods = new Goods("Моющее", 290, R.drawable.gel, "18.01.17");
         goodsList.add(goods);
+    }
+
+
+    private void prepareCategory() {
+        category.add("Компьютеры");
+        category.add("Недвижимость");
+        category.add("Еда");
+        category.add("Одежда");
+        category.add("Велосипеды");
+        category.add("Компьютеры");
+    }
+
+
+    private void prepareSortData(){
+        sortList.add("сортировать по дате добавления");
+        sortList.add("сортировать по цене");
     }
 
     @Override

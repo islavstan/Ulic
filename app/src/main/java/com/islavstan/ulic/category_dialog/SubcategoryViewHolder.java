@@ -1,8 +1,7 @@
-package com.islavstan.ulic.category;
+package com.islavstan.ulic.category_dialog;
 
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.islavstan.ulic.R;
 import com.thoughtbot.expandablerecyclerview.viewholders.ChildViewHolder;
