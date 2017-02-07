@@ -10,12 +10,10 @@
 Время реакции, мс	нет данных</string>
 
 
-
     <string-array name="conditionList">
         <item>новый</item>
         <item>б/у</item>
     </string-array>
-
 
 
     <string-array name="placeList">

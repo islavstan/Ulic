@@ -337,7 +337,8 @@
                 android:gravity="center"
                 android:background="?selectableItemBackgroundBorderless"
                 android:clickable="true"
-                android:text="Купить"
+                android:id="@+id/buyBtn"
+                android:text="Перейти к покупке"
                 android:textColor="@color/colorAccent"
                 android:textSize="16sp"
                 android:layout_centerInParent="true"/>

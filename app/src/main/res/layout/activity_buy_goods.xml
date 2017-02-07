@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_buy_goods"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context="com.islavstan.ulic.BuyGoodsActivity">
+
+
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:elevation="6dp"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
+
+
+
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:padding="16dp"
+       android:layout_height="wrap_content">
+       <TextView
+           android:id="@+id/name_text"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="Название товара"
+           android:textAppearance="@style/TextAppearance.AppCompat.Small"
+           android:textColor="#727272"/>
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:id="@+id/goods_name"
+           android:textSize="18sp"
+           android:layout_below="@id/name_text"
+           android:layout_marginTop="8dp"
+           android:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+           android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+           android:textColor="#212121"/>
+
+
+   </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingBottom="16dp"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/price_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Цена"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="#727272"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/price"
+            android:layout_below="@id/price_text"
+            android:layout_marginTop="8dp"
+            android:text="200"
+            android:textSize="28sp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="#212121"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/price_text"
+            android:text="грн"
+            android:textColor="#212121"
+            android:layout_marginLeft="4dp"
+            android:gravity="bottom"
+            android:textSize="14sp"
+            android:layout_alignBottom="@+id/price"
+            android:layout_toRightOf="@+id/price"/>
+
+
+    </RelativeLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingBottom="16dp"
+        android:id="@+id/input_layout_membership_card"
+        android:layout_width="match_parent"
+        app:hintTextAppearance="@style/MyHintText"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/input_membership_card"
+            android:layout_width="match_parent"
+            android:theme="@style/MyEditText"
+            android:layout_height="wrap_content"
+            android:hint="номер членского билета" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingBottom="16dp"
+        android:id="@+id/input_layout_password"
+        android:layout_width="match_parent"
+        app:hintTextAppearance="@style/MyHintText"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/input_password"
+            android:layout_width="match_parent"
+            android:theme="@style/MyEditText"
+            android:layout_height="wrap_content"
+            android:hint="пароль" />
+
+    </android.support.design.widget.TextInputLayout>
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <Button
+
+        android:layout_alignParentBottom="true"
+        android:textColor="#FFFFFF"
+        android:background="@color/colorPrimary"
+        android:layout_width="match_parent"
+        android:text="купить"
+        android:layout_height="wrap_content" />
+    </RelativeLayout>
+
+</LinearLayout>

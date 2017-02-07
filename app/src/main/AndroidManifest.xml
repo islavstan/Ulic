@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.islavstan.ulic">
+
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
@@ -17,14 +18,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".DetailGoodInfoActivity" />
-        <activity android:name=".CreateAdActivity"></activity>
-
-
+        <activity android:name=".CreateAdActivity" />
         <activity
             android:name="com.andremion.louvre.home.GalleryActivity"
             android:parentActivityName=".CreateAdActivity"
-            android:theme="@style/AppTheme.Louvre.Light.DarkActionBar"
-          >
+            android:theme="@style/AppTheme.Louvre.Light.DarkActionBar">
             <meta-data
                 android:name="CreateAdActivity"
                 android:value=".CreateAdActivity" />
@@ -32,7 +30,7 @@
         <activity
             android:name="com.andremion.louvre.preview.PreviewActivity"
             android:theme="@style/AppTheme.Louvre.Preview" />
-
+        <activity android:name=".BuyGoodsActivity"></activity>
     </application>
 
 </manifest>
