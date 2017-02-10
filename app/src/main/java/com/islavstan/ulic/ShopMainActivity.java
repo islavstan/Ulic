@@ -30,6 +30,7 @@ import com.github.aakira.expandablelayout.ExpandableRelativeLayout;
 import com.islavstan.ulic.adapter.UlicRecyclerAdapter;
 import com.islavstan.ulic.bottom_sheet.BSCategoryRecyclerAdapter;
 import com.islavstan.ulic.model.Goods;
+import com.islavstan.ulic.my_goods.MyGoodsActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -413,13 +414,10 @@ public class ShopMainActivity extends AppCompatActivity  implements NavigationVi
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
 
-  /*     if (id == R.id.redact_pers_info) {
-            Intent intent = new Intent(MainActivity.this, PersInformActivity.class);
-            startActivityForResult(intent, 555);
-        } else if (id == R.id.setting) {
-            Intent intent = new Intent(MainActivity.this, SettingActivity.class);
+        if(id == R.id.my_goods){
+            Intent intent = new Intent(ShopMainActivity.this, MyGoodsActivity.class);
             startActivity(intent);
-        }*/
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

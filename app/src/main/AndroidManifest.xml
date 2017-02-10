@@ -30,7 +30,8 @@
         <activity
             android:name="com.andremion.louvre.preview.PreviewActivity"
             android:theme="@style/AppTheme.Louvre.Preview" />
-        <activity android:name=".BuyGoodsActivity"></activity>
+        <activity android:name=".BuyGoodsActivity" />
+        <activity android:name=".my_goods.MyGoodsActivity"></activity>
     </application>
 
 </manifest>

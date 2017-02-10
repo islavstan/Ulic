@@ -2,9 +2,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/redact_pers_info"
+        android:id="@+id/my_purchases"
         android:background="?attr/selectableItemBackground"
-        android:title="Личные данные" />
+        android:title="Мои покупки" />
     <!--
             <item
                 android:id="@+id/galery"
@@ -15,14 +15,14 @@
       -->
 
     <item
-        android:id="@+id/invite_friend"
+        android:id="@+id/my_goods"
 
         android:background="?attr/selectableItemBackground"
-        android:title="Пригласить друзей" />
+        android:title="Мои товары" />
     <item
         android:id="@+id/discount"
         android:background="?attr/selectableItemBackground"
-        android:title="Дисконт" />
+        android:title="Избранное" />
 
     <item
         android:id="@+id/setting"
