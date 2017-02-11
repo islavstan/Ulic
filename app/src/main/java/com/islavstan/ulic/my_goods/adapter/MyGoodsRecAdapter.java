@@ -14,6 +14,7 @@ import com.islavstan.ulic.DetailGoodInfoActivity;
 import com.islavstan.ulic.R;
 import com.islavstan.ulic.adapter.UlicRecyclerAdapter;
 import com.islavstan.ulic.model.Goods;
+import com.islavstan.ulic.my_goods.MyGoodsDetailActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -46,6 +47,14 @@ public class MyGoodsRecAdapter extends RecyclerView.Adapter<MyGoodsRecAdapter.Cu
         holder.price.setText(goods.getPrice() + " грн");
         holder.date.setText(goods.getDate());
         Picasso.with(holder.date.getContext()).load(goods.getImage()).into(holder.image);
+
+        holder.card_view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent =new Intent(holder.card_view.getContext(), MyGoodsDetailActivity.class);
+                holder.card_view.getContext().startActivity(intent);
+            }
+        });
 
     }
 

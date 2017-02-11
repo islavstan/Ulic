@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/delete"
+        android:icon="@drawable/shop_delete_my_goods"
+        android:title="удалить"
+        app:showAsAction="always"/>
+    <item android:id="@+id/redact"
+        android:icon="@drawable/shop_change_my_goods"
+        android:title="редактировать"
+        app:showAsAction="always"/>
+</menu>
