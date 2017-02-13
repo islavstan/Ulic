@@ -33,6 +33,7 @@ public class CreateAdActivity extends AppCompatActivity  implements PlaceDialog.
     }
 
 
+
     RecyclerView recyclerView;
     ChoicePhotoAdapter choicePhotoAdapter;
     private static final int LOUVRE_REQUEST_CODE = 1;
@@ -102,8 +103,17 @@ public class CreateAdActivity extends AppCompatActivity  implements PlaceDialog.
             }
         });
 
+
+
         louvre = Louvre.init(CreateAdActivity.this);
         louvre.setMaxSelection(4);
+
+
+
+
+
+
+
         photo = (ImageView) findViewById(R.id.photo);
 
         photo.setOnClickListener(new View.OnClickListener() {
@@ -126,6 +136,10 @@ public class CreateAdActivity extends AppCompatActivity  implements PlaceDialog.
 
     }
 
+
+    public void setMaxPhotoForLouvre(int max){
+        louvre.setMaxSelection(max);
+    }
 
     public void setCategoryTocategoryET(String category) {
         categoryET.setText(category);

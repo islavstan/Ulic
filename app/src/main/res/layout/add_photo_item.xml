@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   android:layout_width="88dp"
+    android:layout_height="88dp">
+
+
+
+    <ImageView
+        android:layout_width="88dp"
+        android:layout_height="88dp"
+        android:id="@+id/add_photo"
+        android:background="?selectableItemBackgroundBorderless"
+        android:layout_margin="8dp"
+        android:clickable="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/image"/>
+
+
+
+
+
+</RelativeLayout>
