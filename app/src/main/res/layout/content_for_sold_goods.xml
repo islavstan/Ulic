@@ -7,7 +7,6 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
 
     >
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -120,85 +119,80 @@
             android:padding="12dp">
 
             <ImageView
-                android:id="@+id/ivContactItem3"
+                android:id="@+id/ivContactItem4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="@dimen/activity_horizontal_margin"
                 android:layout_marginRight="@dimen/activity_horizontal_margin"
-                android:src="@drawable/ic_info2" />
+                android:src="@drawable/user_info" />
 
             <TextView
-                android:id="@+id/condition_text"
+                android:id="@+id/seller_info_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
                 android:layout_marginStart="@dimen/activity_horizontal_margin"
-                android:layout_toEndOf="@id/ivContactItem3"
-                android:layout_toRightOf="@id/ivContactItem3"
-                android:text="Состояние"
+                android:layout_toEndOf="@id/ivContactItem4"
+                android:layout_toRightOf="@id/ivContactItem4"
+                android:text="Информация о покупателе"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
 
                 android:textColor="#727272"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/condition_price"
-                android:layout_below="@id/condition_text"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_marginStart="@dimen/activity_horizontal_margin"
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_toRightOf="@+id/ivContactItem4"
+                android:layout_below="@+id/seller_info_text"
+                android:id="@+id/creator_block"
                 android:layout_marginTop="8dp"
-                android:layout_toEndOf="@id/ivContactItem3"
-                android:layout_toRightOf="@id/ivContactItem3"
-                android:text="б/у"
-                android:maxLines="1"
-                android:layout_marginRight="8dp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-
-                android:textColor="#212121"/>
-            <TextView
-                android:id="@+id/info_text"
-                android:layout_marginTop="16dp"
-                android:layout_below="@+id/condition_price"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
                 android:layout_marginStart="@dimen/activity_horizontal_margin"
-                android:layout_toEndOf="@id/ivContactItem3"
-                android:layout_toRightOf="@id/ivContactItem3"
-                android:text="Описание"
-                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:layout_height="wrap_content">
 
-                android:textColor="#727272"/>
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/user_image"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/ic_man"
+                        android:layout_centerVertical="true"
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/info"
-                android:layout_below="@id/info_text"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_marginStart="@dimen/activity_horizontal_margin"
-                android:layout_marginTop="8dp"
-                android:layout_toEndOf="@id/ivContactItem3"
-                android:layout_toRightOf="@id/ivContactItem3"
-                android:text="Отличный телевизор работает как часы очень весёлый "
-                android:layout_marginRight="8dp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                       />
 
-                android:textColor="#212121"/>
+
+
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="8dp"
+                    android:layout_toRightOf="@+id/user_image"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/user_name"
+                        android:maxLines="1"
+                        android:textColor="#212121"
+                        android:text="Василий Петров"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/user_number"
+                        android:layout_marginTop="4dp"
+                        android:text="+3000.4623958"
+                        android:layout_below="@+id/user_name"/>
+
+                </RelativeLayout>
+
+
+
+
+            </RelativeLayout>
 
 
 
         </RelativeLayout>
-        <include layout="@layout/item_divider"/>
-
-
-
-
-
-
-
+        <include layout="@layout/item_divider" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -208,46 +202,46 @@
             android:padding="12dp">
 
             <ImageView
-                android:id="@+id/ivContactItem6"
+                android:id="@+id/ivContactItem5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="@dimen/activity_horizontal_margin"
                 android:layout_marginRight="@dimen/activity_horizontal_margin"
-                android:src="@drawable/location" />
+                android:src="@drawable/delivery_status" />
 
             <TextView
-                android:id="@+id/location_text"
+                android:id="@+id/status_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
                 android:layout_marginStart="@dimen/activity_horizontal_margin"
-                android:layout_toEndOf="@id/ivContactItem6"
-                android:layout_toRightOf="@id/ivContactItem6"
-                android:text="Место продажи"
+                android:layout_toEndOf="@id/ivContactItem5"
+                android:layout_toRightOf="@id/ivContactItem5"
+                android:text="Статус доставки"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
 
                 android:textColor="#727272"/>
 
-            <TextView
-                android:layout_width="wrap_content"
+            <Spinner
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/goods_location"
-                android:layout_below="@id/location_text"
+                android:layout_below="@id/status_text"
                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
                 android:layout_marginStart="@dimen/activity_horizontal_margin"
                 android:layout_marginTop="8dp"
-                android:layout_toEndOf="@id/ivContactItem6"
-                android:layout_toRightOf="@id/ivContactItem6"
-                android:text="Украина"
-                android:maxLines="1"
+                android:layout_toEndOf="@id/ivContactItem5"
+                android:layout_toRightOf="@id/ivContactItem5"
                 android:layout_marginRight="8dp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-
-                android:textColor="#212121"/>
+               android:textAlignment="viewStart"
+                android:id="@+id/spinner_delivery"
+                android:entries="@array/statusList"
+              />
 
 
         </RelativeLayout>
+
+
 
 
 

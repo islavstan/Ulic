@@ -33,7 +33,8 @@
         <activity android:name=".BuyGoodsActivity" />
         <activity android:name=".my_goods.MyGoodsActivity" />
         <activity android:name=".my_goods.MyGoodsDetailActivity" />
-        <activity android:name=".my_goods.ChangeMyGoodsActivity"></activity>
+        <activity android:name=".my_goods.ChangeMyGoodsActivity" />
+        <activity android:name=".my_goods.MySoldGoodsDetailActivity"></activity>
     </application>
 
 </manifest>
